@@ -1,0 +1,5 @@
+
+Otad IPChat
+
+Windows Installer 3.1
+.Net Framework 3.5
