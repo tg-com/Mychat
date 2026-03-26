@@ -166,6 +166,67 @@
     </script>
 </body>
 </html>
+
+            showStatus('Connecting...', 'connecting');
+
+            setTimeout(() => {
+                showStatus('Connected!', 'connected');
+                
+                // UI Switch
+                document.getElementById('login-section').style.display = 'none';
+                document.getElementById('main-header').style.display = 'none';
+                document.getElementById('chat-window').style.display = 'block';
+                document.getElementById('display-room').textContent = currentRoom;
+
+                // Fake User Data for Rendering
+                const fakeUsers = {
+                    "u1": { name: currentUser, isAdmin: true },
+                    "u2": { name: "Rahul", isAdmin: false },
+                    "u3": { name: "Sneha", isAdmin: false }
+                };
+                renderSidebar(fakeUsers);
+
+            }, 1000);
+        });
+
+        function showStatus(message, type) {
+            const statusDiv = document.getElementById('status');
+            const statusText = document.getElementById('statusText');
+            statusDiv.className = 'status ' + type;
+            statusText.textContent = message;
+        }
+
+        function renderSidebar(users) {
+            const list = document.getElementById('user-render-list');
+            list.innerHTML = "<p style='margin-bottom:10px; color:var(--text-secondary)'>Online Users:</p>";
+            
+            Object.entries(users).forEach(([id, data]) => {
+                const div = document.createElement('div');
+                div.className = "action-row";
+                div.innerHTML = `
+                    <div style="width:8px; height:8px; background:var(--success-color); border-radius:50%"></div>
+                    <span style="font-size:14px;">${data.name} ${data.isAdmin ? '<span class="admin-badge">ADMIN</span>' : ''}</span>
+                    ${isAdmin && data.name !== currentUser ? `<i class="fas fa-user-slash kick-btn" onclick="kick('${data.name}')"></i>` : ''}
+                `;
+                list.appendChild(div);
+            });
+        }
+
+        function kick(target) {
+            if(confirm(`Kick ${target}?`)) {
+                alert(`${target} ko kick kar diya gaya hai.`);
+                // Note: Real Firebase code yahan jayega (db.ref...)
+            }
+        }
+
+        function clearAllChat() {
+            if(confirm("Dhyan dein! Poori chat delete ho jayegi. Continue?")) {
+                alert("Chat data deleted!");
+            }
+        }
+    </script>
+</body>
+</html>
 <!DOCTYPE html>
 <html lang="en">
 <head>
