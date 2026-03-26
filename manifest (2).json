@@ -1,0 +1,14 @@
+{
+  "background_color": "#ffffff",
+  "dir": "ltr",
+  "display": "standalone",
+  "name": "GHOST CHAT",
+  "orientation": "any",
+  "scope": "/https://tg-com.github.io/Chat/",
+  "short_name": "CHAT",
+  "start_url": "/https://tg-com.github.io/Chat/",
+  "theme_color": "#ffffff",
+  "id": "https://tg-com.github.io/Chat/",
+  "description": "GHOST CHAT — Ek modern progressive web app jo messaging ko simple aur tez banata hai. Kahin bhi, kabhi bhi connect rahein.",
+  "lang": "en"
+}
